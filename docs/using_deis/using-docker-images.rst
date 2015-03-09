@@ -97,5 +97,15 @@ You will need to do these things:
  3. Restart docker.socker
  4. Start docker.service again
  5. Verify connectivity
+
+.. code-block:: yaml
+
+  - name: docker.socket¬
+    command: start¬
+    drop-ins:¬
+    - name: 30-ListenStream.conf¬
+      content: |¬
+        [Socket]¬
+        ListenStream=2375¬
  
- 
+
