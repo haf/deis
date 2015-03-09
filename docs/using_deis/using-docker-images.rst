@@ -162,6 +162,20 @@ X:
 
 Try using ``docker ps`` again!
 
+If you find that the restart of docker shut some deis services down (docker ps
+on the machine of your choice doesn't display as many running units), then you
+can use the comand
+
+  fleetctl list-units
+
+It will show what machines have failed units -- you can manually start the unit
+again -- ssh into the machine running docker and run
+
+  sudo systemctl start deis-publisher.service && \
+  journalctl -fu deis-publisher.service
+
+...if it was deis-publisher which hadn't started.
+
 Appendix - mounting NFS in docker
 ---------------------------------
 
